@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.set("view engine", "ejs");
+
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
@@ -108,16 +110,20 @@ app.get("/auth/google/failure", (req, res) => {
   res.send("Something went wrong!");
 });
 
+// app.get("/", (req, res) => {
+//   res.send(`
+//       <a href="/auth/google">Authenticate with Google</a>
+//       <br>
+//       <a href="/auth/facebook">Authenticate with Facebook</a>
+//       <br>
+//       <a href="/auth/twitter">Authenticate with Twitter</a>
+//       <br>
+//       <a href="/auth/linkedin">Authenticate with LinkedIn</a>
+//     `);
+// });
+
 app.get("/", (req, res) => {
-  res.send(`
-      <a href="/auth/google">Authenticate with Google</a>
-      <br>
-      <a href="/auth/facebook">Authenticate with Facebook</a>
-      <br>
-      <a href="/auth/twitter">Authenticate with Twitter</a>
-      <br>
-      <a href="/auth/linkedin">Authenticate with LinkedIn</a>
-    `);
+  res.render("login");
 });
 
 app.get("/api/user-stats", async (req, res) => {
