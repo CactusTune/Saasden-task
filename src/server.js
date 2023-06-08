@@ -160,6 +160,6 @@ app.get("/logout", (req, res) => {
   res.send("Goodbye!");
 });
 
-app.listen(5000, () => {
-  console.log("server started on 5000");
+app.listen(3000 || process.env.PORT, () => {
+  console.log("server started on 3000");
 });
