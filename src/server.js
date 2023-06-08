@@ -5,16 +5,16 @@ const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
 const createContainer = require("./db");
+const keyRoutes = require("./secret");
 
 const app = express();
-
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
-
-app.use(cors());
 
 app.use(
   session({
@@ -69,6 +69,8 @@ app.get(
     res.redirect("/auth/protected");
   }
 );
+
+app.use("/api", keyRoutes);
 
 app.get(
   "/auth/linkedin/callback",
@@ -158,6 +160,6 @@ app.get("/logout", (req, res) => {
   res.send("Goodbye!");
 });
 
-app.listen(3000, () => {
-  console.log("server started on 3000");
+app.listen(5000, () => {
+  console.log("server started on 5000");
 });
