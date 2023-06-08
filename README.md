@@ -62,9 +62,9 @@ For initial boot, run the following command in the root of the project
    AZURE_CLIENT_SECRET=
 
 4. Start the server by running the following command: 
-    ```bash
+ ```bash
     $ npm run dev
-    ```
+ ```
 
 5. ## HTTP API Endpoints
    ### HTTP Authentication Endpoints
@@ -77,27 +77,31 @@ For initial boot, run the following command in the root of the project
        - [(/auth/linkedin)]-Initiates the LinkedIn authentication process.
 
     ### HTTP Authentication Endpoints
+    - [api](#api)
       - [(/auth/google/callback)]-Callback URL for Google authentication.
       - [(/auth/facebook/callback)]-Callback URL for Facebook authentication.
       - [(/auth/twitter/callback)]-Callback URL for Twitter authentication.
       - [(/auth/linkedin/callback)]-Callback URL for LinkedIn authentication.
 
     ### Protected Endpoint
-    - [(/auth/protected)]-The endpoint you are redirected to after login, requires authentication. Returns a greeting message along with user information and also stores users details in Azure Cosmos DB
+    - [api](#api)
+      - [(/auth/protected)]-The endpoint you are redirected to after login, requires authentication. Returns a greeting message along with user information and also stores users details in Azure Cosmos DB
 
     ### API Endpoints
-    - [(/api/user-stats)]-Fetches user statistics from the database and returns the following information:
+    - [api](#api)
+      - [(/api/user-stats)]-Fetches user statistics from the database and returns the following information:
         numUsers - Total number of users.
         providers - Number of users by authentication provider.
         averageFriendsOrFollowers - Average number of friends or followers per user.
         locations - Number of users by location.   
     
-    - [(/api/user-stats)]- Retrieves secret credentials from a Azure Key Vault and returns them in JSON format.
+      - [(/api/user-stats)]- Retrieves secret credentials from a Azure Key Vault and returns them in JSON format.
 
     ### Other endpoints
-    - [(/)]-Home page that displays authentication options.
-    - [(/auth/google/failure)]-Displayed when there is an error during the Google authentication process.
-    - [(/logout)]-Logs out the user and destroys the session.
+    - [api](#api)
+      - [(/)]-Home page that displays authentication options.
+      - [(/auth/google/failure)]-Displayed when there is an error during the Google authentication process.
+      - [(/logout)]-Logs out the user and destroys the session.
 
 
 
